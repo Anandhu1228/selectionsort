@@ -1,63 +1,71 @@
 #include<stdio.h>
-void readarray(int [],int);
-void printarray(int [],int);
+void readnumber(int [],int);
 void selectionsort(int [],int);
 void swapnumber(int *,int *);
+void displaynumber(int [],int);
 
 void main()
 {
     int a[100],n;
-    printf("\nThe number of elements whis is needed to be orted is  : ");
+    printf("\nEnter the no: of numbers  : \t");
     scanf("%d",&n);
     
-        readarray(a,n);
-        printarray(a,n);
-        selectionsort(a,n);
-        
+    readnumber(a,n);
+    selectionsort(a,n);
+    displaynumber(a,n);
+    
 }
 
-void readarray(int a[],int n)
+
+void readnumber(int a [],int n)
 {
     int i;
-    printf("\nEnter %d elements which is needed to be sorted:  \n",n);
+    printf("\nEnter %d numbers to be sorted :\n",n);
     for(i=0;i<n;i++)
-    scanf("%d",&a[i]);
-}
-
-void printarray(int a[],int n)
-{
-    int i;
-    printf("\nThe %d elements after sorting is :  ",n);
-    for(i=0;i<=n;i++)
-    printf("\t%d",a[i]);
-}
-
-void selectionsort(int a[],int n)
-{
-    int i,j,min,ind;
-    for(i=0;i<n;++i)
-    min = a[i];
-    ind = i;
     {
-        for(j=i+1;j<n-1;++j)
-        if(a[j]<min)
-    
-        {
-            min = a[j];
-            ind = j;
-        }
-       
+        scanf("%d",&a[i]);
     }
-     swapnumber(&a[i],&a[min]);
-    
 }
+
+
+
+void selectionsort(int a [],int n)
+{
+    int i,j,min;
+    for(i=0;i<n-1;i++)
+    {
+        min = i;
+        for(j=1+i;j<n;j++)
+        if(a[j]<a[min])
+        {
+            min=j;
+        }
+        if(min != i)
+        {
+        swapnumber(&a[i],&a[min]);
+        }
+      
+    }
+}
+
 
 void swapnumber(int *a,int *b)
 {
-    int temp;
-    temp = *a;
-    *a = *b;
-    *b = temp;
+  int t;
+  t = *a;
+  *a = *b;
+  *b = t;
+}
+
+
+void displaynumber(int a[],int n)
+{
+    int i;
+    printf("\nOrder of numbers after getting sorted is :\t");
+    for(i=0;i<=n;i++)
+    {
+        printf("\t%d",a[i]);
+    }
 }
 
 
